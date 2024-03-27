@@ -1,0 +1,14 @@
+version: "3.2"
+services:
+  e2e:
+    image: cypress
+    build: .
+    container_name: challenge_tests
+
+    environment:
+      - CYPRESS_baseUrl=https://qa-task.redvike.rocks/
+    command: npm run cypress:run
+    volumes:
+      - ./cypress:/app/cypress
+      - ./cypress.config.js:/app/cypress.config.js
+      - ./results:/app/results
